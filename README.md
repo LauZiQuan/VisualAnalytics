@@ -4,6 +4,7 @@
 https://wiki.smu.edu.sg/18191is428g1/Homviz_Homies
 
 > INSTALLATION
+
 The project uses NodeJs for backend and MySQL for database management. The website uses HTML5, with 
 Live Server extention on Visual Studio Code. Please install MySQL, NodeJs, Visual Studio Code and 
 Live Server before proceeding. 
@@ -24,6 +25,7 @@ Installation links are as follow:
     * VSCode must be installed before Live Server, as Live Server is a VSCode extension
 
 >BOOTING UP
+
 Attached in HOMEVIZHOMIES_VISUAL_ANALYTICS_PROJECT.zip will be:
 
 Dashboard [FOLDER]
