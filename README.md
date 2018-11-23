@@ -23,7 +23,7 @@ Installation links are as follow:
     Download Live Server from this website: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
     * VSCode must be installed before Live Server, as Live Server is a VSCode extension
 
->>>>>>> BOOTING UP
+>BOOTING UP
 Attached in HOMEVIZHOMIES_VISUAL_ANALYTICS_PROJECT.zip will be:
 
 Dashboard [FOLDER]
