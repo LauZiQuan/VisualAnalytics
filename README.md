@@ -1,5 +1,6 @@
 # VisualAnalytics - Homviz Homies
 ### Visualizing Housing Development Board Housing Situation in Singapore
+by Lau Zi Quan, Le Thanh AN, LOW Yun Vera
 
 https://wiki.smu.edu.sg/18191is428g1/Homviz_Homies
 
