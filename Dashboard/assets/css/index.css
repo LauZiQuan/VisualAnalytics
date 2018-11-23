@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Raleway:400,700');
+
+/* CLEAR DEFAULT STYLING */
+body { 
+    margin:0; 
+    background-color: #F7F7F7;
+    font-family: 'Raleway', sans-serif;
+} 
+
+h1, h2, h3, h4 {
+    display: inline;
+}
+
+/* CLASSES */
+.container{
+    width: 100%;
+}
+
+.dwellings-container{
+    position: relative; 
+    width:40vw;
+}
+
+.title {
+    background-image: url('../img/rainbowhdb.svg');
+    background-attachment: fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: #FFD3D4;
+    color: black;
+}
+
+.title-2 {
+    width: 50%;
+    padding-top: 20%;
+    font-size: 1.2em;
+}
+
+.break{
+    background-image: url('../img/dragon.svg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #E69963;
+
+    height: 30vh;
+    width: 100%;
+}
+
+.chapter{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.chapter-2{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 130vh;
+    margin: 0;
+    background-color: white;
+}
+
+.chapter-1-charts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-types-container{
+    width:90%;
+    height: 90vh;
+}
+
+#chart-room-types-chapter1{
+    width: 100%;
+    height: 100%;
+}
+
+#slider-range {
+    width: 60%;
+}
+
+.range-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.chapter-2-visualisations{
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.chapter-3-visualisation{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph-chap-3{
+    width: 45%;
+}
+
+.legend{
+    height: 50px;
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.filter {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 50%; /* Full-width */
+    height: 3px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    margin: 1%;
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    border-radius: 50%;
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+}
+
+.map{
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+}
+
+.map-img{
+    margin-left:10%;
+}
+
+/* Bullet Chart */
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .measure.s0 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
+
+/* For Map */
+.map-hoverables{
+    width: 1008px;
+    height: 630px;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    z-index: 2;
+}
+
+#mapid { 
+    width: 490px;
+    height: 300px;
+}
+
+.map-hoverables-img-pasir-ris{
+    height: 17%;
+    width: auto;
+    
+    filter: grayscale(1);
+    position: absolute;
+    top: 38%;
+    left: 71.8%;
+    opacity: 1;
+    clip-path: polygon(56% 18%, 77% 1%, 99% 4%, 87% 68%, 76% 100%, 70% 100%, 54% 65%, 0 43%, 0 0, 27% 5%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-bedok{
+    height: 13.5%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 52.8%;
+    left: 69.8%;
+    opacity: 1;
+    clip-path: polygon(24% 0, 17% 0, 7% 26%, 0 49%, 10% 63%, 24% 63%, 36% 100%, 71% 87%, 85% 79%, 95% 60%, 100% 49%, 100% 24%, 87% 9%, 63% 38%, 54% 38%, 37% 3%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-tampines{
+    height: 15%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 44.5%;
+    left: 72%;
+    opacity: 1;
+    clip-path: polygon(24% 0, 47% 2%, 61% 9%, 88% 35%, 100% 67%, 100% 84%, 52% 100%, 28% 74%, 17% 60%, 0 63%, 0% 41%, 0 19%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-hougang{
+    height: 13.6%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 36%;
+    left: 59.3%;
+    opacity: 1;
+    clip-path: polygon(36% 15%, 44% 3%, 88% 7%, 100% 20%, 89% 50%, 70% 88%, 4% 89%, 0 77%, 11% 62%, 11% 44%, 24% 37%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-serangoon{
+    height: 18%;
+    width: auto;
+    
+    filter: grayscale(1);
+    position: absolute;
+    top: 40%;
+    left: 58.5%;
+    opacity: 1;
+    clip-path: polygon(63% 20%, 66% 4%, 84% 0, 100% 33%, 90% 83%, 73% 73%, 52% 100%, 0 77%, 0 62%, 6% 36%, 55% 38%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-geylang{
+    height: 19%;
+    width: auto;
+    
+    filter: grayscale(1);
+    position: absolute;
+    top: 51.3%;
+    left: 60.2%;
+    opacity: 1;
+    clip-path: polygon(14% 11%, 50% 26%, 61% 5%, 79% 0, 97% 5%, 87% 34%, 100% 45%, 94% 54%, 54% 67%, 38% 90%, 16% 97%, 1% 100%, 7% 72%, 13% 53%, 6% 40%, 7% 26%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-marine-parade{
+    height: 20.9%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 60%;
+    left: 57%;
+    opacity: 1;
+    clip-path: polygon(39% 31%, 47% 14%, 59% 7%, 79% 0, 92% 2%, 100% 21%, 100% 32%, 84% 35%, 64% 46%, 47% 60%, 20% 89%, 5% 100%, 0 77%, 0 69%, 15% 48%, 25% 35%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-sembawang{
+    height: 15.2%;
+    width: auto;
+    
+    filter: grayscale(1);
+    position: absolute;
+    top: 12.7%;
+    left: 42.7%;
+    opacity: 0.5;
+    clip-path: polygon(30% 0, 44% 0, 62% 0, 66% 8%, 81% 6%, 100% 18%, 100% 35%, 71% 58%, 76% 83%, 74% 100%, 64% 100%, 25% 89%, 8% 78%, 0 62%, 0 24%, 19% 2%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-yishun{
+    width: 9.4%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 19%;
+    left: 50.3%;
+    opacity: 1;
+    clip-path: polygon(30% 0, 44% 0, 51% 5%, 59% 15%, 68% 27%, 82% 43%, 97% 51%, 100% 64%, 74% 93%, 51% 100%, 40% 87%, 29% 97%, 0 100%, 8% 69%, 18% 46%, 9% 8%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s
+}
+
+.map-hoverables-img-punggol{
+    width: 11.6%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 27.4%;
+    left: 56.5%;
+    opacity: 1;
+    clip-path: polygon(22% 9%, 47% 3%, 59% 25%, 69% 35%, 89% 40%, 100% 50%, 100% 62%, 93% 75%, 90% 93%, 59% 93%, 40% 87%, 29% 91%, 0 83%, 0 67%, 0 47%, 11% 24%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-sengkang{
+    width: 11%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 33.4%;
+    left: 54.5%;
+    opacity: 1;
+    clip-path: polygon(26% 8%, 47% 16%, 74% 14%, 90% 17%, 100% 17%, 100% 67%, 100% 100%, 90% 100%, 68% 79%, 45% 72%, 30% 69%, 19% 62%, 0 67%, 0 47%, 0 0);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-amk{
+    height: 14.6%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 38%;
+    left: 53.5%;
+    clip-path: polygon(35% 0, 61% 8%, 88% 11%, 100% 22%, 76% 36%, 73% 54%, 64% 66%, 61% 80%, 71% 93%, 51% 97%, 42% 74%, 0 67%, 0 47%, 7% 14%);
+    opacity: 0.5;
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-bishan{
+    width: 17.5%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 41.9%;
+    left: 42.1%;
+    opacity: 1;
+    clip-path: polygon(1% 19%, 30% 28%, 41% 12%, 51% 22%, 59% 0, 68% 0, 67% 34%, 94% 47%, 100% 90%, 73% 100%, 66% 86%, 41% 82%, 19% 73%, 0 58%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-toa-payoh{
+    width: 7.3%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 54%;
+    left: 55%;
+    opacity: 1;
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-clementi{
+    width: 11%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 56.5%;
+    left: 32.6%;
+    opacity: 1;
+    clip-path: polygon(7% 51%, 15% 27%, 13% 0%, 84% 21%, 96% 21%, 98% 33%, 73% 45%, 62% 99%, 34% 70%, 23% 73%, 17% 61%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-kallang{
+    width: 7%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 58.2%;
+    left: 55.9%;
+    opacity: 1;
+    clip-path: polygon(50% 0%, 100% 6%, 100% 100%, 81% 100%, 1% 29%, 0 0);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-central{
+    height: 20%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 58.8%;
+    left: 46.5%;
+    opacity: 1;
+    clip-path: polygon(4% 22%, 16% 5%, 33% 9%, 39% 2%, 55% 2%, 73% 5%, 88% 20%, 99% 34%, 94% 51%, 97% 65%, 81% 70%, 77% 82%, 77% 96%, 62% 95%, 59% 69%, 39% 63%, 31% 53%, 21% 55%, 12% 45%, 2% 43%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-bukit-merah{
+    width: 12.5%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 66.7%;
+    left: 46%;
+    opacity: 1;
+    clip-path: polygon(5% 0%, 31% 9%, 46% 5%, 54% 14%, 81% 19%, 84% 46%, 99% 58%, 100% 70%, 81% 88%, 62% 99%, 2% 61%);    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-queenstown{
+    width: 12.1%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 61.8%;
+    left: 35.6%;
+    opacity: 1;
+    clip-path: polygon(0 71%, 33% 97%, 54% 79%, 89% 99%, 98% 99%, 100% 22%, 95% 7%, 77% 21%, 38% 0, 27% 43%, 27% 55%, 34% 61%, 30% 70%, 3% 61%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-bukit-timah{
+    width: 8.5%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 49.6%;
+    left: 34.1%;
+    opacity: 1;
+    clip-path: polygon(2% 34%, 39% 30%, 44% 0%, 65% 3%, 64% 29%, 80% 50%, 100% 61%, 100% 100%, 1% 63%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-bukit-batok{
+    width: 6.2%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 42.4%;
+    left: 31.5%;
+    opacity: 1;
+    clip-path: polygon(5% 55%, 63% 1%, 83% 0%, 73% 23%, 88% 65%, 100% 97%, 1% 100%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-bukit-panjang{
+    height: 15.5%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 35%;
+    left: 31.5%;
+    opacity: 1;
+    clip-path: polygon(4% 36%, 32% 3%, 47% 5%, 60% 1%, 74% 16%, 95% 10%, 96% 22%, 100% 34%, 91% 63%, 89% 100%, 76% 89%, 55% 79%, 42% 57%, 34% 59%, 2% 96%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-woodlands{
+    height: 16.2%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 16.5%;
+    left: 32%;
+    opacity: 1;
+    clip-path: polygon(1% 42%, 8% 35%, 26% 39%, 37% 16%, 42% 16%, 55% 1%, 67% 48%, 100% 62%, 97% 99%, 78% 98%, 66% 82%, 55% 98%, 17% 97%, 11% 50%, 1% 59%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-cck{
+    height: 21%;
+    width: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 23.5%;
+    left: 26%;
+    opacity: 1;
+    clip-path: polygon(2% 73%, 29% 63%, 34% 37%, 62% 23%, 63% 10%, 81% 1%, 93% 0, 100% 57%, 78% 79%, 34% 98%, 19% 95%, 5% 84%);    
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-jurong-east{
+    width: 17%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 40.9%;
+    left: 19.2%;
+    opacity: 1;
+    clip-path: polygon(0 47%, 9% 40%, 29% 19%, 74% 0%, 83% 0%, 78% 41%, 89% 44%, 93% 60%, 97% 67%, 88% 84%, 96% 84%, 100% 97%, 93% 100%, 71% 98%, 61% 87%, 53% 91%, 39% 86%, 35% 77%, 32% 64%, 28% 52%, 18% 56%, 4% 58%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.map-hoverables-img-jurong-west{
+    width: 22%;
+    height: auto;
+
+    filter: grayscale(1);
+    position: absolute;
+    top: 38.5%;
+    left: 7.5%;
+    opacity: 1;
+    clip-path: polygon(100% 18%, 62% 50%, 80% 42%, 88% 69%, 83% 84%, 70% 89%, 58% 91%, 52% 96%, 39% 98%, 32% 94%, 25% 88%, 13% 76%, 12% 89%, 25% 99%, 0% 100%, 1% 68%, 7% 47%, 14% 33%, 21% 21%, 33% 9%, 44% 9%, 59% 0%, 69% 0%, 73% 6%, 82% 0%, 90% 0%, 97% 5%, 100% 11%);
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.bar-rect{
+    fill:blue;
+}
+
+.line-chart{
+    border: 1px solid lightgray;
+}
+
+.line {
+    fill: none;
+    stroke: #ffab00;
+    stroke-width: 3;
+}
+
+.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+  }
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  .select-selected {
+    background-color: DodgerBlue;
+  }
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  

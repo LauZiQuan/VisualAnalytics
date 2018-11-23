@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Import -->
+        <!-- Main CSS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/index.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="./jquery-ui-1.12.1.custom/jquery-ui.css" />
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="./Leaflet.markercluster-1.4.1/dist/MarkerCluster.css"/> 
+        <link rel="stylesheet" href="./Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css"/> 
+        <script src="./Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
+
+        <!-- D3 and ChartJS -->
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+
+        <!-- Tippy -->
+        <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+
+        <!-- JQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    </head>
+    <body>
+            <!-- Header -->
+            <div class='title'>
+                <div class='title-2'>
+                    <h1> A tale of public housing</h1>
+                    <br/>
+                    <h1>in Singapore</h1>
+                </div>
+                
+            </div>
+            
+            <!-- Chapter 1 -->
+            <div class='chapter' style="height:50%">
+                <h1>Story 1 : Newsale Flats Rental and Sold as of 2018</h1>
+                <br/>
+                <select id='room_type_dropdown' name="room_type_dropdown">
+                    <option value='1room'>1 Room</option>
+                    <option value="2room">2 Room</option>
+                    <option value="3room">3 Room</option>
+                    <option value="4room">4 Room</option>
+                    <option value="5room">5 Room</option>
+                </select>
+
+                <select id='chart_type_dropdown' name="chart_type_dropdown">
+                    <option value='absolute'>Absolute</option>
+                    <option value="percentage">Percentage</option>
+                </select>
+                
+                <div class="chapter-1-charts">
+                    <div class="room-types-container" id="chapter1">
+                        <canvas id="chart-room-types-chapter1"></canvas>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Break -->
+            <div class="break"></div>
+
+            <!-- Chapter 2 -->
+            <div class='chapter-2'>
+                <h1>Story 2: Singapore's towns and age of dwellings</h1> <br/><br/>
+                <!-- Filters -->
+                <h3>Select Year</h3>
+                <div class='filter'>
+                    <input type="range" min="2012" max="2030" value="2018" class="slider" id="myRange">
+                    <h1 id='demo'></h1> <br/>
+                </div>
+                <h3>Select Unit Age Range</h3>
+                <div class="range-container">
+                    <b style="padding-right:20px">0 years old</b>
+                    <div id="slider-range"></div>
+                    <b style="padding-left:20px">99 years old</b>
+                </div>
+                <p>
+                    <label for="amount">Unit Age Range:</label>
+                    <input type="text" id="amount" readonly style="font-size: 20px; border:0; font-weight:bold;">
+                </p>
+
+                <h1 id='selected_town'>Selected Town: Singapore</h1>
+                <div class='chapter-2-visualisations'>
+                    <!-- Map -->
+                    <div class='map-hoverables'>
+                        <img src='./assets/img/range.jpg'  class='legend'/>
+                        <img src='./assets/img/pasir_ris.png' onclick="set_town(event)" class="map-hoverables-img-pasir-ris"/>
+                        <img src='./assets/img/bedok.png' onclick="set_town(event)" class="map-hoverables-img-bedok"/>
+                        <img src='./assets/img/Tampines.png' onclick="set_town(event)" class="map-hoverables-img-tampines"/>
+                        <img src='./assets/img/hougang.png' onclick="set_town(event)" class="map-hoverables-img-hougang"/>
+                        <img src='./assets/img/serangoon.png' onclick="set_town(event)" class="map-hoverables-img-serangoon"/>
+                        <img src='./assets/img/geylang.png' onclick="set_town(event)" class="map-hoverables-img-geylang"/>
+                        <img src='./assets/img/marine_parade.png' onclick="set_town(event)" class="map-hoverables-img-marine-parade"/>
+                        <img src='./assets/img/sembawang.png' onclick="set_town(event)" class="map-hoverables-img-sembawang"/>
+                        <img src='./assets/img/yishun.png' onclick="set_town(event)" class="map-hoverables-img-yishun"/> 
+                        <img src='./assets/img/punggol.png' onclick="set_town(event)" class="map-hoverables-img-punggol"/>
+                        <img src='./assets/img/sengkang.png' onclick="set_town(event)" class="map-hoverables-img-sengkang"/>
+                        <img src='./assets/img/amk.png' onclick="set_town(event)" class="map-hoverables-img-amk"/>
+                        <img src='./assets/img/bishan.png' onclick="set_town(event)" class="map-hoverables-img-bishan"/>
+                        <img src='./assets/img/toa_payoh.png' onclick="set_town(event)" class="map-hoverables-img-toa-payoh"/>
+                        <img src='./assets/img/kallang.png' onclick="set_town(event)" class="map-hoverables-img-kallang"/>
+                        <img src='./assets/img/central.png' onclick="set_town(event)" class="map-hoverables-img-central"/>
+                        <img src='./assets/img/bukit_merah.png' onclick="set_town(event)" class="map-hoverables-img-bukit-merah"/>
+                        <img src='./assets/img/queenstown.png' onclick="set_town(event)" class="map-hoverables-img-queenstown"/>
+                        <img src='./assets/img/bukit_timah.png' onclick="set_town(event)" class="map-hoverables-img-bukit-timah"/>
+                        <img src='./assets/img/bukit_batok.png' onclick="set_town(event)" class="map-hoverables-img-bukit-batok"/>
+                        <img src='./assets/img/bukit_panjang.png' onclick="set_town(event)" class="map-hoverables-img-bukit-panjang"/>
+                        <img src='./assets/img/woodlands.png' onclick="set_town(event)" class="map-hoverables-img-woodlands"/>
+                        <img src='./assets/img/cck.png' onclick="set_town(event)" class="map-hoverables-img-cck"/>
+                        <img src='./assets/img/jurong_east.png' onclick="set_town(event)" class="map-hoverables-img-jurong-east"/> 
+                        <img src='./assets/img/jurong_west.png' onclick="set_town(event)" class="map-hoverables-img-jurong-west"/> 
+                        <img src='./assets/img/clementi.png' onclick="set_town(event)" class="map-hoverables-img-clementi"/>
+                    </div>
+                    <!-- Bar Chart -->
+                    <div class="dwellings-container">
+                        <canvas id="chart-dwellings"></canvas>
+                        <div id="mapid"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Break -->
+            <div class="break"></div>
+
+            <!-- Chapter 3 -->
+            <div class='chapter' style="height: 50vh">
+                <h1>Story 3: Supply and Demand</h1>
+                <br/>
+                <select id='line_dropdown' name="line_dropdown" class='box'>
+                    <option value='Ang Mo Kio'>Ang Mo Kio</option>
+                    <option value="Bedok">Bedok</option>
+                    <option value="Bishan">Bishan</option>
+                    <option value="Bukit Batok">Bukit Batok</option>
+                    <option value="Bukit Merah">Bukit Merah</option>
+                    <option value="Bukit Panjang">Bukit Panjang</option>
+                    <option value='Bukit Timah'>Bukit Timah</option>
+                    <option value="Central Area">Central Area</option>
+                    <option value="Choa Chu Kang">Choa Chu Kang</option>
+                    <option value="Clementi">Clementi</option>
+                    <option value="Geylang">Geylang</option>
+                    <option value='Hougang'>Hougang</option>
+                    <option value="Jurong East">Jurong East</option>
+                    <option value="Jurong West">Jurong West</option>
+                    <option value="Kallang">Kallang</option>
+                    <option value="Marine Parade">Marine Parade</option>
+                    <option value='Pasir Ris'>Pasir Ris</option>
+                    <option value="Punggol">Punggol</option>
+                    <option value="Queenstown">Queenstown</option>
+                    <option value="Sembawang">Sembawang</option>
+                    <option value="Sengkang">Sengkang</option>
+                    <option value='Serangoon'>Serangoon</option>
+                    <option value="Tampines">Tampines</option>
+                    <option value="Toa Payoh">Toa Payoh</option>
+                    <option value="Woodlands">Woodlands</option>
+                    <option value="Yishun">Yishun</option>
+                </select>
+                <div class='chapter-3-visualisation'>
+                    <div id='chap-3-absolute' class='graph-chap-3'>
+                        <h3>Absolute</h3>
+                        <canvas id='population-vs-construction'></canvas>
+                    </div>
+                    <div id='chap-3-aggregate' class='graph-chap-3'>
+                        <h3>Cumulative</h3>
+                        <canvas id='population-vs-construction-aggregate' class='graph-chap-3'></canvas>
+                    </div>
+                    
+                </div>
+            </div>
+<!-- 
+            
+            <div class="break"></div>
+
+            <div class='chapter'>
+                <h1>Chapter 4: Room types selling price - a look over the years</h1>
+                <select id='town_selling_price_dropdown' name="town_selling_price_dropdown" class='box'>
+                    <option value='Ang Mo Kio'>Ang Mo Kio</option>
+                    <option value="Bedok">Bedok</option>
+                    <option value="Bishan">Bishan</option>
+                    <option value="Bukit Batok">Bukit Batok</option>
+                    <option value="Bukit Merah">Bukit Merah</option>
+                    <option value="Bukit Panjang">Bukit Panjang</option>
+                    <option value='Bukit Timah'>Bukit Timah</option>
+                    <option value="Central Area">Central Area</option>
+                    <option value="Choa Chu Kang">Choa Chu Kang</option>
+                    <option value="Clementi">Clementi</option>
+                    <option value="Geylang">Geylang</option>
+                    <option value='Hougang'>Hougang</option>
+                    <option value="Jurong East">Jurong East</option>
+                    <option value="Jurong West">Jurong West</option>
+                    <option value="Kallang">Kallang</option>
+                    <option value="Marine Parade">Marine Parade</option>
+                    <option value='Pasir Ris'>Pasir Ris</option>
+                    <option value="Punggol">Punggol</option>
+                    <option value="Queenstown">Queenstown</option>
+                    <option value="Sembawang">Sembawang</option>
+                    <option value="Sengkang">Sengkang</option>
+                    <option value='Serangoon'>Serangoon</option>
+                    <option value="Tampines">Tampines</option>
+                    <option value="Toa Payoh">Toa Payoh</option>
+                    <option value="Woodlands">Woodlands</option>
+                    <option value="Yishun">Yishun</option>
+                </select>
+                <div class='chapter-4-visualisation'>
+                    <canvas id="price-chart-dwellings"></canvas>
+                </div>
+            </div> -->
+        <script src="index.js"></script>
+    </body>
+</html>
