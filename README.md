@@ -29,9 +29,11 @@ Installation links are as follow:
 Attached in HOMEVIZHOMIES_VISUAL_ANALYTICS_PROJECT.zip will be:
 
 Dashboard [FOLDER]
-DashboardDB [FOLDER]
+DashboardBE [FOLDER]
 IS428HomevizHomies.sql [SQL File]
 
-Import data in the DB.sql file provided into MySQL Workbench. Open up the DashboardDB Folder on command 
-prompt and run `npm start`. Server will be listening on port 3000. Open the Dashboard on VSCode and run 
+1) Import data in the DB.sql file provided into MySQL Workbench. 
+2) Open up the DashboardBE Folder on command 
+prompt and run `npm start`. Server will be listening on port 3000. 
+3) Open the Dashboard on VSCode and run 
 Live Server (by clicking Go Live on the bottom bar). The project will start on port 5500.
